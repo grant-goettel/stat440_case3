@@ -1,0 +1,28 @@
+---
+title: "case3_report1"
+author: "Grant Goettel"
+date: "November 6, 2017"
+output: html_document
+---
+
+```{r}
+library(dplyr)
+gambia <- read.csv("gambiaMissing.csv")
+```
+
+
+
+# is data mcar or mar
+#
+
+
+```{r}
+gambia.missing <- gambia %>%
+  filter(is.na(BEDNET))
+
+gambia.present <- gambia %>%
+  filter(!is.na(BEDNET))
+
+hist(gambia.present$Y)
+hist(gambia.missing$Y)
+```
